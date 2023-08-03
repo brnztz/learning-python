@@ -1,10 +1,6 @@
 from .pessoa import Pessoa
 
 
-def get_data(compra):
-    return compra.data
-
-
 class Cliente(Pessoa):
     def __init__(self, nome, idade):
         super().__init__(nome, idade)
@@ -15,7 +11,7 @@ class Cliente(Pessoa):
 
     def get_data_ultima_compra(self):
         return None if not self.compras else \
-            sorted(self.compras, key=get_data)[-1].data
+            sorted(self.compras, key=lambda c: c.data)[-1].data
 
     def total_compras(self):
         total = 0
